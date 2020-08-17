@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="style/joinPage.css">
+</head>
+<body>
+    <div class="wrap">
+    <h2>회원가입</h2>
+
+    <form action="https://www.naver.com" id="frm">
+        <ul class ="personalinfo">
+            <li>
+                <span>이름</span>
+                <input type="text" value="" name="useerName">
+            </li>
+            <li>
+                <span>아이디</span>
+                <input type="text" value="" name="userID">
+            </li>
+            <li>
+                <span>비밀번호</span>
+                <input type="password" value="" name="userPW" id="PW" onblur="fnPWChk()">
+            </li>
+            <li>
+                <span>비밀번호 확인</span>
+                <input type="password" value="" name="userRePW" id="RePW" onblur="fnPWChk()">
+                <span id="resPW"></span>
+            </li>
+            <li>
+                <span>이메일</span>
+                <input type="text" value="" name="userEmail">
+            </li>
+            <li>
+                <select name="year" id="year" onchange="selectDay()"></select>
+                <select name="month" id="month" onchange="selectDay()"></select>
+                <select name="day" id="day"></select>
+            </li>
+            <li >
+                <input type="checkbox" value="male" name="gender">
+                <span>&nbsp;남</span>
+                <input type="checkbox" value="female" name="gender">
+                <span>&nbsp;여</span>
+            </li>
+            <li>
+                <span>휴대폰번호</span>
+                <input type="text" value="" name="userPhoneNum">
+                <button type="button">인증</button>
+            </li>
+            <li>
+                <span>SMS 인증번호</span>
+                <input type="text" value="" name="athenticationNum">
+                <button type="button">확인</button>
+            </li>
+        </ul>
+
+        <span class="memberLicense" id="test">이용약관</span>
+        <br>
+        <iframe src="source/memberLicense.html" frameborder="0"></iframe>
+        <br>
+
+        <input type="checkbox" id="ageCheckbox" value="unchecked" onclick="fnCheckbox(this.id)">
+        <span class="age">14세 이상입니다. (필수)</span>
+        <br>
+        <span>
+            *회원가입에 필요한 최소한의 정보만 입력 받음으로써 고객님의 개인정보 수집을 최소화하고
+            <br>
+            편리한 회원가입을 제공합니다.
+        </span>
+
+        <ul id="agree">
+            <li>
+                <input type="checkbox" id="totalAgree" value="unchecked" onclick="fnTotalCheckbox()">
+                <span>전체동의</span>
+            </li>
+            <li>
+                <span>
+                <input type="checkbox" id= "check1" value="unchecked" onclick="fnCheckbox(this.id)">
+                이용약관
+                <button type="button">내용보기</button>
+                </span>
+
+                <span>
+                <input type="checkbox" id= "check2" value="unchecked" onclick="fnCheckbox(this.id)">
+                개인정보 수집 및 이용 안내
+                <button type="button">내용보기</button>
+                </span>
+            </li>
+            <li>
+               <span>
+                <input type="checkbox" id= "check3" value="unchecked" onclick="fnCheckbox(this.id)">
+                개인정보 제3자 제공
+                <button type="button" >내용보기</button>
+                </span>
+
+                <span>
+                <input type="checkbox" id= "check4" value="unchecked" onclick="fnCheckbox(this.id)">
+                개인정보 처리위탁
+                <button type="button">내용보기</button>
+                </span>
+            </li>
+        </ul>
+    </form>
+
+    <button type="button" onclick="fnFrmSubmit()" class="join">동의하고 가입완료</button>
+    </div>
+
+    <script src="JS/join.js"></script>
+</body>
+</html>

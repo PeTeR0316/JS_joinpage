@@ -9,33 +9,33 @@
     <div class="wrap">
     <h2>회원가입</h2>
 
-    <form action="https://www.naver.com" id="frm">
+    <form action="https://www.naver.com" id="frm" method="get">
         <ul class ="personalinfo">
             <li>
                 <span>이름</span>
-                <input type="text" value="" name="useerName">
+                <input type="text" value="" id="name" name="useerName" required>
             </li>
             <li>
                 <span>아이디</span>
-                <input type="text" value="" name="userID">
+                <input type="text" value="" id="userId" name="userID" required>
             </li>
             <li>
                 <span>비밀번호</span>
-                <input type="password" value="" name="userPW" id="PW" onblur="fnPWChk()">
+                <input type="password" value="" name="userPW" id="PW" onblur="fnPWChk()" required>
             </li>
             <li>
                 <span>비밀번호 확인</span>
-                <input type="password" value="" name="userRePW" id="RePW" onblur="fnPWChk()">
+                <input type="password" value="" name="userRePW" id="RePW" onblur="fnPWChk()" required>
                 <span id="resPW"></span>
             </li>
             <li>
                 <span>이메일</span>
-                <input type="text" value="" name="userEmail">
+                <input type="text" value="" id="email" name="userEmail" required>
             </li>
             <li>
                 <select name="year" id="year" onchange="selectDay()"></select>
-                <select name="month" id="month" onchange="selectDay()"></select>
-                <select name="day" id="day"></select>
+                <select name="month" id="month" onchange="selectDay()" onclick="deleteOption1()"></select>
+                <select name="day" id="day" onclick="deleteOption2()"></select>
             </li>
             <li >
                 <input type="checkbox" value="male" name="gender">

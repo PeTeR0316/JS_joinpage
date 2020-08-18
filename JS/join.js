@@ -27,12 +27,12 @@ function fnPWChk() {
 
 //SELECT태그 1970년부터 현재 년도까지 생성////////////////////////////
 var now = new Date();
-var year = now.getFullYear();
+var nowYear = now.getFullYear();
 var baseYear = 1970;
 var resYear
 
-for(baseYear; baseYear <= year; baseYear++) {
-    if(baseYear == year) {
+for(baseYear; baseYear <= nowYear; baseYear++) {
+    if(baseYear == nowYear) {
         resYear += "<option selected value=" + baseYear + " id=" + baseYear + ">" + baseYear + "년 </option>"
     } else {
         resYear += "<option value=" + baseYear + " id=" + baseYear + ">" + baseYear + "년</option>"
@@ -43,7 +43,7 @@ document.getElementById("year").innerHTML = resYear;
 
 
 //SELECT태그 월 생성//////////////////////////////////////////////////////////
-var resMonth;
+var resMonth = "<option id=deleteMonth> 월 </option>";
 
 for(var firstMonth = 1; firstMonth <= 12; firstMonth++) {
     resMonth += "<option value=" + firstMonth + ">" + firstMonth + " 월</option>"
@@ -55,7 +55,7 @@ document.getElementById("month").innerHTML = resMonth;
 //SELECT태그 일 생성//////////////////////////////////////////////////////////
 var month = document.getElementById("month").value;
 var selectYear = document.getElementById("year").value;
-var resDay;
+var resDay = "<option id=deleteDay> 일 </option>";
 
 if(month == 4 || month == 6 || month == 9 || month == 11) {
     for(var firstDay = 1; firstDay <= 30; firstDay++) {
@@ -78,13 +78,12 @@ if(month == 4 || month == 6 || month == 9 || month == 11) {
 }
 
 document.getElementById("day").innerHTML = resDay;
-//document.getElementById("day").innerHTML = "<option>일</option>";
 
 //년도, 월 값 변경 시 실행되는 함수
 function selectDay() {
     var month = document.getElementById("month").value;
     var selectYear = document.getElementById("year").value;
-    var resDay;
+    var resDay = "<option id=deleteDay> 일 </option>";
 
     if(month == 4 || month == 6 || month == 9 || month == 11) {
         for(var firstDay = 1; firstDay <= 30; firstDay++) {
@@ -173,7 +172,12 @@ function fnTotalCheckbox() {
 
 //회원가입 양식 제출
 function fnFrmSubmit() {
-    if(document.getElementById("ageCheckbox").checked == true){
+    if(document.getElementById("ageCheckbox").checked == true && document.getElementById("totalAgree").checked == true &&
+       document.getElementById("name").value != "" &&
+       document.getElementById("userId").value != "" &&
+       document.getElementById("PW").value != "" &&
+       document.getElementById("RePW").value != "" &&
+       document.getElementById("email").value != "") {
         var mtd_Type = "get";
         document.getElementById("frm").method = mtd_Type;
         document.getElementById("frm").action = "https://www.google.co.kr";
@@ -181,7 +185,12 @@ function fnFrmSubmit() {
     } else {
         alert("필수 체크사항을 선택하세요");
     }
-
 }
 
+function deleteOption1() {
+    document.getElementById("deleteMonth").style.display = "none";
+}
 
+function deleteOption2() {
+    document.getElementById("deleteDay").style.display = "none";
+}
